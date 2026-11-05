@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://iatpoa1awkpa"]
+
+[ext_resource type="Texture2D" uid="uid://do287rx7v6vl2" path="res://icon.svg" id="1_bavf7"]
+[ext_resource type="Script" uid="uid://b1trturqktayn" path="res://objects/frog.gd" id="1_vnw7q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnw7q"]
+size = Vector2(127, 127)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vnw7q"]
+radius = 106.23088
+
+[node name="frog" type="CharacterBody2D" unique_id=403759129]
+script = ExtResource("1_vnw7q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1560763733]
+texture = ExtResource("1_bavf7")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1523000876]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1419179431]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_vnw7q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1988924621]
+shape = SubResource("CircleShape2D_vnw7q")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

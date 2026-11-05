@@ -15,6 +15,11 @@ run/main_scene="uid://n5sofphd253n"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*uid://ctnhoeq7n0xhp"
+Signals="*uid://brksjeigtvkg1"
+
 [display]
 
 window/size/mode=2
@@ -24,9 +29,14 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[global_group]
+
+avoidable=""
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
+common/physics_interpolation=true
 
 [rendering]
 

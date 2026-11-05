@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://ucts8d34mcba"]
+
+[ext_resource type="PackedScene" uid="uid://iatpoa1awkpa" path="res://objects/frog.tscn" id="1_l1rk1"]
+[ext_resource type="Script" uid="uid://5jk5p7ctqku4" path="res://game/game.gd" id="1_vasa2"]
+[ext_resource type="Texture2D" uid="uid://xg6h4vl0f338" path="res://assets/bean.PNG" id="3_h7iqs"]
+
+[node name="game" type="Node2D" unique_id=264259709]
+script = ExtResource("1_vasa2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=389525048]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.24228424, 0.36943075, 0.43667513, 1)
+
+[node name="lanes" type="HBoxContainer" parent="." unique_id=574115246]
+custom_minimum_size = Vector2(100, 648)
+offset_left = 147.0
+offset_top = 2.0
+offset_right = 957.0
+offset_bottom = 650.0
+theme_override_constants/separation = 12
+
+[node name="one" type="ColorRect" parent="lanes" unique_id=1753670337]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+color = Color(0.27030292, 0.35873598, 0.40072733, 1)
+
+[node name="Marker2D" type="Marker2D" parent="lanes/one" unique_id=2028335780]
+position = Vector2(75, -172)
+
+[node name="lane" type="Marker2D" parent="lanes/one" unique_id=512651803]
+position = Vector2(100, 555)
+
+[node name="two" type="ColorRect" parent="lanes" unique_id=1759281423]
+custom_minimum_size = Vector2(150, 648)
+layout_mode = 2
+color = Color(0.27030292, 0.35873598, 0.40072733, 1)
+
+[node name="Marker2D" type="Marker2D" parent="lanes/two" unique_id=2099214269]
+position = Vector2(75, -172)
+
+[node name="lane" type="Marker2D" parent="lanes/two" unique_id=729753042]
+position = Vector2(75, 555)
+
+[node name="three" type="ColorRect" parent="lanes" unique_id=1024579305]
+custom_minimum_size = Vector2(150, 648)
+layout_mode = 2
+color = Color(0.27030292, 0.35873598, 0.40072733, 1)
+
+[node name="Marker2D" type="Marker2D" parent="lanes/three" unique_id=1968126027]
+position = Vector2(75, -172)
+
+[node name="lane" type="Marker2D" parent="lanes/three" unique_id=445623469]
+position = Vector2(75, 555)
+
+[node name="four" type="ColorRect" parent="lanes" unique_id=1442419478]
+custom_minimum_size = Vector2(150, 648)
+layout_mode = 2
+color = Color(0.27030292, 0.35873598, 0.40072733, 1)
+
+[node name="Marker2D" type="Marker2D" parent="lanes/four" unique_id=2143428392]
+position = Vector2(75, -172)
+
+[node name="lane" type="Marker2D" parent="lanes/four" unique_id=1260600890]
+position = Vector2(75, 555)
+
+[node name="five" type="ColorRect" parent="lanes" unique_id=981453197]
+custom_minimum_size = Vector2(150, 648)
+layout_mode = 2
+color = Color(0.27030292, 0.35873598, 0.40072733, 1)
+
+[node name="Marker2D" type="Marker2D" parent="lanes/five" unique_id=1615621659]
+position = Vector2(75, -172)
+
+[node name="lane" type="Marker2D" parent="lanes/five" unique_id=423488480]
+position = Vector2(75, 555)
+
+[node name="frog" parent="." unique_id=403759129 instance=ExtResource("1_l1rk1")]
+position = Vector2(546, 557.00006)
+scale = Vector2(0.7, 0.7)
+
+[node name="addCar" type="Timer" parent="." unique_id=2023098942]
+autostart = true
+
+[node name="ui" type="CanvasLayer" parent="." unique_id=1876907931]
+
+[node name="Bean" type="Sprite2D" parent="ui" unique_id=1830566693]
+position = Vector2(1048, 40)
+texture = ExtResource("3_h7iqs")
+
+[node name="Bean2" type="Sprite2D" parent="ui" unique_id=1230219878]
+position = Vector2(1048, 101)
+texture = ExtResource("3_h7iqs")
+
+[node name="Bean3" type="Sprite2D" parent="ui" unique_id=1825888926]
+position = Vector2(1048, 169)
+texture = ExtResource("3_h7iqs")
+
+[node name="death" type="Node2D" parent="ui" unique_id=2026537542]
+
+[node name="ColorRect" type="ColorRect" parent="ui/death" unique_id=156127788]
+offset_right = 1153.0
+offset_bottom = 647.0
+color = Color(0.7588553, 0.24367505, 0.2045834, 0.41960785)
+
+[node name="Button" type="Button" parent="ui/death" unique_id=1693684760]
+process_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 342.0
+offset_right = 1151.0
+offset_bottom = 419.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Restart"
+
+[connection signal="timeout" from="addCar" to="." method="_on_add_car_timeout"]
+[connection signal="pressed" from="ui/death/Button" to="." method="_on_button_pressed"]

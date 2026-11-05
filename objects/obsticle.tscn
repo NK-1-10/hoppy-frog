@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bjy1p1plgq533"]
+
+[ext_resource type="Script" uid="uid://bot1vb0xh4k4t" path="res://objects/obsticle.gd" id="1_h1fgk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ek8pa"]
+size = Vector2(44, 66)
+
+[node name="obsticle" type="AnimatableBody2D" unique_id=612860622]
+script = ExtResource("1_h1fgk")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1434159771]
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 20.0
+offset_bottom = 32.0
+mouse_filter = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2078123841]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ek8pa")
