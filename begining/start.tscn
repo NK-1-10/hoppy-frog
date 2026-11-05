@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://n5sofphd253n"]
+
+[node name="start" type="Node2D" unique_id=344685605]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=79871002]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=404405426]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7379511, 0.9079974, 0.7372836, 1)
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1248652125]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="heading" type="Label" parent="CanvasLayer/Panel" unique_id=1991903819]
+layout_mode = 0
+offset_top = 58.0
+offset_right = 400.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 30
+text = "Welcome to Hoppy-Frog"
+horizontal_alignment = 1
+
+[node name="start" type="Button" parent="CanvasLayer/Panel" unique_id=831058064]
+layout_mode = 0
+offset_top = 423.0
+offset_right = 400.0
+offset_bottom = 492.0
+text = "Start Game"
+
+[node name="exit" type="Button" parent="CanvasLayer/Panel" unique_id=111962034]
+layout_mode = 0
+offset_top = 511.0
+offset_right = 400.0
+offset_bottom = 580.0
+text = "Exit Game"
