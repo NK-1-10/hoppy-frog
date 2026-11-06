@@ -1,10 +1,25 @@
 [gd_scene format=3 uid="uid://iatpoa1awkpa"]
 
-[ext_resource type="Texture2D" uid="uid://do287rx7v6vl2" path="res://icon.svg" id="1_bavf7"]
 [ext_resource type="Script" uid="uid://b1trturqktayn" path="res://objects/frog.gd" id="1_vnw7q"]
+[ext_resource type="Texture2D" uid="uid://dhkxpfkkg3efr" path="res://assets/still.PNG" id="2_yxo3l"]
+[ext_resource type="Texture2D" uid="uid://b3ve05028u5c8" path="res://assets/leciens.PNG" id="3_3htcn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnw7q"]
-size = Vector2(127, 127)
+[sub_resource type="SpriteFrames" id="SpriteFrames_3t4by"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yxo3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3htcn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yxo3l"]
+radius = 66.50188
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vnw7q"]
 radius = 106.23088
@@ -12,14 +27,15 @@ radius = 106.23088
 [node name="frog" type="CharacterBody2D" unique_id=403759129]
 script = ExtResource("1_vnw7q")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1560763733]
-texture = ExtResource("1_bavf7")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=844650119]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_3t4by")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1523000876]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1419179431]
 position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_vnw7q")
+shape = SubResource("CircleShape2D_yxo3l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1988924621]
 shape = SubResource("CircleShape2D_vnw7q")

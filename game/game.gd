@@ -10,7 +10,10 @@ const it = preload("res://objects/obsticle.tscn")
 @onready var death_screen = $ui/death/ColorRect
 @onready var r = $ui/death/Button
 
+
+
 func _ready() -> void:
+	Global.playing = true
 	Signals.hp.connect(heartChange)
 	h1.visible = true; h2.visible = true; h3.visible = true
 	death_screen.visible = false

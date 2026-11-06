@@ -2,14 +2,48 @@
 
 [ext_resource type="PackedScene" uid="uid://iatpoa1awkpa" path="res://objects/frog.tscn" id="1_l1rk1"]
 [ext_resource type="Script" uid="uid://5jk5p7ctqku4" path="res://game/game.gd" id="1_vasa2"]
+[ext_resource type="Script" uid="uid://cbnypo7cuohk" path="res://game/ui.gd" id="2_j8tme"]
 [ext_resource type="Texture2D" uid="uid://xg6h4vl0f338" path="res://assets/bean.PNG" id="3_h7iqs"]
+[ext_resource type="Script" uid="uid://daaydhql1ip24" path="res://game/pads.gd" id="3_l8g03"]
+[ext_resource type="Script" uid="uid://if73iw7vb72t" path="res://game/pause.gd" id="4_3vho3"]
+[ext_resource type="Texture2D" uid="uid://5ktaeyb5qt2k" path="res://assets/zala l.PNG" id="4_y36n6"]
+[ext_resource type="Texture2D" uid="uid://7bbdsky5p4h0" path="res://assets/blue l.PNG" id="5_l8g03"]
+[ext_resource type="Texture2D" uid="uid://bhi3ymi04ng8x" path="res://assets/purple l.PNG" id="6_j8tme"]
+[ext_resource type="Texture2D" uid="uid://cy8mnfpd6fdi0" path="res://assets/pink l.PNG" id="7_3vho3"]
+[ext_resource type="Texture2D" uid="uid://gf24iw3gpm25" path="res://assets/red l.PNG" id="8_qf6n1"]
+[ext_resource type="Script" uid="uid://bx6hdpe1kkhv0" path="res://game/camera_2d.gd" id="12_qf6n1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vsp63"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_y36n6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_l8g03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j8tme")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3vho3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qf6n1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="game" type="Node2D" unique_id=264259709]
 script = ExtResource("1_vasa2")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=389525048]
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = -69.0
+offset_top = -57.0
+offset_right = 1238.0
+offset_bottom = 731.0
 color = Color(0.24228424, 0.36943075, 0.43667513, 1)
 
 [node name="lanes" type="HBoxContainer" parent="." unique_id=574115246]
@@ -75,28 +109,26 @@ position = Vector2(75, -172)
 [node name="lane" type="Marker2D" parent="lanes/five" unique_id=423488480]
 position = Vector2(75, 555)
 
-[node name="frog" parent="." unique_id=403759129 instance=ExtResource("1_l1rk1")]
-position = Vector2(546, 557.00006)
-scale = Vector2(0.7, 0.7)
-
 [node name="addCar" type="Timer" parent="." unique_id=2023098942]
 autostart = true
 
 [node name="ui" type="CanvasLayer" parent="." unique_id=1876907931]
+script = ExtResource("2_j8tme")
 
 [node name="Bean" type="Sprite2D" parent="ui" unique_id=1830566693]
-position = Vector2(1048, 40)
+position = Vector2(1048, 181)
 texture = ExtResource("3_h7iqs")
 
 [node name="Bean2" type="Sprite2D" parent="ui" unique_id=1230219878]
-position = Vector2(1048, 101)
+position = Vector2(1048, 242)
 texture = ExtResource("3_h7iqs")
 
 [node name="Bean3" type="Sprite2D" parent="ui" unique_id=1825888926]
-position = Vector2(1048, 169)
+position = Vector2(1048, 310)
 texture = ExtResource("3_h7iqs")
 
 [node name="death" type="Node2D" parent="ui" unique_id=2026537542]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="ui/death" unique_id=156127788]
 offset_right = 1153.0
@@ -116,6 +148,63 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "Restart"
+
+[node name="tim" type="Label" parent="ui" unique_id=127678025]
+offset_left = 1011.0
+offset_top = 101.0
+offset_right = 1088.0
+offset_bottom = 143.0
+theme_override_font_sizes/font_size = 30
+text = "00:00"
+
+[node name="pause" type="Control" parent="ui" unique_id=2143695761]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_3vho3")
+
+[node name="pads" type="Node2D" parent="." unique_id=1079923828]
+position = Vector2(0, 8)
+script = ExtResource("3_l8g03")
+
+[node name="first" type="AnimatedSprite2D" parent="pads" unique_id=515834726]
+position = Vector2(229, 557)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vsp63")
+
+[node name="second" type="AnimatedSprite2D" parent="pads" unique_id=806841163]
+position = Vector2(381, 557)
+rotation = 1.9434206
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vsp63")
+
+[node name="third" type="AnimatedSprite2D" parent="pads" unique_id=1803596304]
+position = Vector2(546, 557)
+rotation = -1.1408248
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vsp63")
+
+[node name="forth" type="AnimatedSprite2D" parent="pads" unique_id=726652831]
+position = Vector2(704.9079, 557)
+rotation = 0.5953311
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vsp63")
+
+[node name="fifth" type="AnimatedSprite2D" parent="pads" unique_id=816344992]
+position = Vector2(869.9079, 557)
+rotation = -2.9316611
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vsp63")
+
+[node name="frog" parent="." unique_id=403759129 instance=ExtResource("1_l1rk1")]
+position = Vector2(546, 557.00006)
+scale = Vector2(0.7, 0.7)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1149231079]
+position = Vector2(577, 325)
+script = ExtResource("12_qf6n1")
 
 [connection signal="timeout" from="addCar" to="." method="_on_add_car_timeout"]
 [connection signal="pressed" from="ui/death/Button" to="." method="_on_button_pressed"]

@@ -2,6 +2,8 @@ extends Node
 var hearts = 3
 var speed = 350
 var currentx = 546
+var time = 0
+var playing = false
 
 func _ready() -> void:
 
