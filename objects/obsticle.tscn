@@ -5,16 +5,53 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ek8pa"]
 size = Vector2(44, 66)
 
-[node name="obsticle" type="AnimatableBody2D" unique_id=612860622]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1fgk"]
+size = Vector2(44, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rewcu"]
+size = Vector2(44, 36)
+
+[node name="obsticle" type="Node2D" unique_id=1368537422]
 script = ExtResource("1_h1fgk")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1434159771]
+[node name="one" type="AnimatableBody2D" parent="." unique_id=1955650815]
+sync_to_physics = false
+
+[node name="ColorRect" type="ColorRect" parent="one" unique_id=1434159771]
 offset_left = -20.0
 offset_top = -30.0
 offset_right = 20.0
 offset_bottom = 32.0
 mouse_filter = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2078123841]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="one" unique_id=2078123841]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_ek8pa")
+
+[node name="two" type="AnimatableBody2D" parent="." unique_id=3937437]
+sync_to_physics = false
+
+[node name="ColorRect" type="ColorRect" parent="two" unique_id=839568141]
+offset_left = -20.0
+offset_top = -55.0
+offset_right = 20.0
+offset_bottom = 52.0
+mouse_filter = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="two" unique_id=1390808263]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_h1fgk")
+
+[node name="three" type="AnimatableBody2D" parent="." unique_id=388400070]
+sync_to_physics = false
+
+[node name="ColorRect" type="ColorRect" parent="three" unique_id=1801359202]
+offset_left = -20.0
+offset_top = -14.0
+offset_right = 20.0
+offset_bottom = 18.0
+mouse_filter = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="three" unique_id=269605914]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_rewcu")

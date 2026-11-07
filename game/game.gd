@@ -22,6 +22,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+
 func _on_add_car_timeout() -> void:
 	add_car()
 	car_timer.start()
@@ -41,7 +42,6 @@ func heartChange():
 	if Global.hearts == 0:
 		death_screen.visible = true
 		r.visible= true
-		#await get_tree().create_timer(0.3).timeout 
 		get_tree().paused = true
 
 func _on_button_pressed() -> void: #this is the restart button
@@ -52,3 +52,7 @@ func _on_button_pressed() -> void: #this is the restart button
 	get_tree().call_group("avoidable", "queue_free")
 	$frog.position = Vector2(546, 557.0)
 	
+
+
+func _on_sp_timeout() -> void:
+	Global.speed += 5

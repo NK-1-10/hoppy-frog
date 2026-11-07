@@ -1,11 +1,19 @@
-extends AnimatableBody2D
+extends Node2D
 var moving = true
-var speed = 350
+
+@onready var one = $one
+@onready var two = $two
+@onready var three = $three
 
 func _ready() -> void:
-	pass # Replace with function body.
+	var logs = [one, two ,three]
+	var pick = randi_range(0, 2)
+	for i in 3:
+		if i != pick:
+			logs[i].queue_free()
+	logs[pick].add_to_group("avoidable")
 
-func _process(delta: float) -> void:
-	position.y += speed*delta
+func _physics_process(delta: float) -> void:
+	position.y += Global.speed*delta
 	if position.y >= 700:
 		queue_free()

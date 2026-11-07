@@ -8,7 +8,21 @@ var y = 557
 
 func _ready() -> void:
 	frog.position = Vector2(546, 557.0)
+	Signals.restart.connect(restart)
 
+var tween
+var tween2
+
+func restart():
+	if tween: tween.kill()
+	if tween2: tween2.kill()
+	Global.currentx = 546
+	frog.position = Vector2(546, 557.0)
+	$Sprite2D.frame = 0
+	moving = false
+	stunned = false
+	can_hurt = true
+	visible = true
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_right") and not moving and not stunned:
@@ -16,12 +30,14 @@ func _physics_process(delta: float) -> void:
 			return
 		else: 
 			jump("right")
+			Signals.jumped.emit()
 			$Sprite2D.flip_h = true
 	elif Input.is_action_just_pressed("ui_left") and not moving and not stunned:
 		if Global.currentx == 222:
 			return
 		else: 
 			jump("left")
+			Signals.jumped.emit()
 			$Sprite2D.flip_h = false
 		
 	
@@ -35,15 +51,14 @@ func jump(where):
 	if where == "right":
 		how_much = s
 	else: how_much = -s
-	var tween = create_tween()
-	var tween2 = create_tween()
+	tween = create_tween()
+	tween2 = create_tween()
 	Global.currentx = Global.currentx + how_much
 	tween2.tween_property(self, "position:y", y+height, 0.25)
 	tween.tween_property(self, "position:x", Global.currentx , 0.5)
 	tween2.tween_property(self, "position:y", y, 0.25)
 	await tween.finished
 	$Sprite2D.frame = 0
-	print(Global.currentx)
 	Signals.landed.emit()
 	moving = false
 
@@ -60,4 +75,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			await get_tree().create_timer(0.08).timeout 
 		can_hurt = true
 		stunned= false
-		
+		for b in $Area2D.get_overlapping_bodies():
+			if b.is_in_group("avoidable"):
+				_on_area_2d_body_entered(b)
+				break

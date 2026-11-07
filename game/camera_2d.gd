@@ -7,7 +7,8 @@ func _ready() -> void:
 	Signals.landed.connect(add_shake)
 
 func add_shake():
-	shake = 1
+	var m = min(Global.streak, 4)
+	shake = 2.0*pow(1.4,m)
 
 func _process(delta):
 	if shake > 0:
